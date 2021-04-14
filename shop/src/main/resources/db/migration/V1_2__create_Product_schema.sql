@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS product(
     id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name varchar(20),
+    name varchar(20) unique ,
     description varchar(50),
     price decimal,
     weight double,

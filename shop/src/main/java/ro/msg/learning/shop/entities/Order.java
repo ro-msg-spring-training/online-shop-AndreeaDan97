@@ -1,21 +1,21 @@
 package ro.msg.learning.shop.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
 
 
 @Entity @Data @EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="orders")
 public class Order extends BaseEntity implements Serializable {
-    private Date creation_date;
-    private String address_country;
-    private String address_city;
-    private String address_county;
-    private String address_street;
+    private LocalDate creation_date;
 
     @ManyToOne
     @JoinColumn(name="id_customer", nullable=false)
@@ -24,5 +24,9 @@ public class Order extends BaseEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name="id_shipped_from", nullable=false)
     private Location location;
+
+    @ManyToOne
+    @JoinColumn(name="id_address", nullable = false)
+    private Address address;
 
 }

@@ -1,4 +1,4 @@
-package ro.msg.learning.shop.security;
+package ro.msg.learning.shop.configurations;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;

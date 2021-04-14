@@ -1,13 +1,20 @@
 package ro.msg.learning.shop.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity @Data @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name="product")
 public class Product extends BaseEntity implements Serializable {
+
+    @Column(name="name", unique=true)
     private String name;
     private String description;
     private long price;
@@ -15,7 +22,7 @@ public class Product extends BaseEntity implements Serializable {
     private String imageURL;
 
     @ManyToOne
-    @JoinColumn(name = "product_product_category", nullable = false)
+    @JoinColumn(name = "id_product_category", nullable = false)
     private ProductCategory productCategory;
 
     @ManyToOne
