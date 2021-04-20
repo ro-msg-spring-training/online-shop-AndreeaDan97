@@ -28,7 +28,7 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    
+
     @PostMapping(value="/insert")
     public ResponseEntity<List<OrderDetails>> addOrder(@RequestBody OrderDto orderDto) {
         log.info("Entering the addOrder(orderDto) method in OrderController...");
