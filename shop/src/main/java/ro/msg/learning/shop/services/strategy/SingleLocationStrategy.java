@@ -1,4 +1,5 @@
 package ro.msg.learning.shop.services.strategy;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import ro.msg.learning.shop.dtos.OrderDetailsDto;
@@ -6,12 +7,14 @@ import ro.msg.learning.shop.dtos.StockDto;
 import ro.msg.learning.shop.dtos.builders.StockBuilder;
 import ro.msg.learning.shop.entities.Stock;
 import ro.msg.learning.shop.repositories.StockRepository;
+import ro.msg.learning.shop.services.exceptions.NotEnoughStock;
 
 @Slf4j
+@RequiredArgsConstructor
 public class SingleLocationStrategy implements LocationStrategy {
 
-    @Autowired
-    private StockRepository stockRepository;
+
+    private final StockRepository stockRepository;
 
     /**
      *
@@ -36,12 +39,13 @@ public class SingleLocationStrategy implements LocationStrategy {
                 }
             }
         }
+
         if(newQuantity!=-1) {
             stockDto.setQuantity(newQuantity);
             Stock updatedStock = StockBuilder.toStockEntity(stockDto);
             stockRepository.save(updatedStock);
         }else{
-            throw new RuntimeException("Insufficient stock!");
+            throw new NotEnoughStock(idProduct);
         }
 
         return stockDto;

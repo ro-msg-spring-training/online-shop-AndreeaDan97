@@ -1,7 +1,7 @@
 package ro.msg.learning.shop.services;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.msg.learning.shop.dtos.OrderDetailsDto;
 import ro.msg.learning.shop.dtos.OrderDto;
@@ -11,28 +11,21 @@ import ro.msg.learning.shop.dtos.builders.OrderBuilder;
 import ro.msg.learning.shop.entities.*;
 import ro.msg.learning.shop.repositories.*;
 import ro.msg.learning.shop.services.strategy.LocationStrategy;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
 public class OrderService {
 
-    @Autowired
-    private LocationStrategy locationStrategy;
-    @Autowired
-    private LocationRepository locationRepository;
-    @Autowired
-    private OrderRepository orderRepository;
-    @Autowired
-    private ProductRepository productRepository;
-    @Autowired
-    private OrderDetailsRepository orderDetailsRepository;
-    @Autowired
-    private AddressRepository addressRepository;
-    @Autowired
-    private CustomerRepository customerRepository;
+    private final LocationStrategy locationStrategy;
+    private final LocationRepository locationRepository;
+    private final OrderRepository orderRepository;
+    private final ProductRepository productRepository;
+    private final OrderDetailsRepository orderDetailsRepository;
+    private final AddressRepository addressRepository;
+    private final CustomerRepository customerRepository;
 
     /**
      *

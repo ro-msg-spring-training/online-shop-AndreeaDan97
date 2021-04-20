@@ -13,4 +13,14 @@ public class AddressBuilder {
         address.setStreet(addressDto.getStreet());
         return address;
     }
+
+    public static AddressDto toDto(Address address){
+        AddressDto addressDto = new AddressDto();
+        addressDto.setId(address.getId());
+        addressDto.setCity(address.getCity());
+        addressDto.setCountry(address.getCountry());
+        addressDto.setCounty(address.getCounty());
+        addressDto.setStreet(address.getStreet());
+        return addressDto;
+    }
 }

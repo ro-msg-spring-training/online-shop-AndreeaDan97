@@ -7,7 +7,9 @@ import org.springframework.data.repository.query.Param;
 import ro.msg.learning.shop.entities.Stock;
 import ro.msg.learning.shop.entities.StockId;
 
+import java.util.List;
+
 public interface StockRepository extends JpaRepository<Stock, StockId> {
-    @Query("SELECT s FROM Stock s WHERE s.product.id = :id AND s.quantity = (SELECT MAX(s.quantity) FROM Stock s)")
-    Page<Stock> retrieveFirstMaxQuantityByProductId(@Param("id") int id, Pageable pageable);
+    @Query("SELECT s FROM Stock s WHERE s.product.id = :id AND s.quantity = (SELECT MAX(s.quantity) FROM Stock s WHERE s.product.id = :id)")
+    List<Stock> retrieveFirstMaxQuantityByProductId(@Param("id") int id);
 }

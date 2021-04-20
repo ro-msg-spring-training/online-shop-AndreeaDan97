@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Table(name="product")
 public class Product extends BaseEntity implements Serializable {
 
-    @Column(name="name", unique=true)
+    @Column(name="name")
     private String name;
     private String description;
     private long price;

@@ -15,13 +15,6 @@ public class LoadDatabase {
 
     @Bean
     CommandLineRunner initDatabase(SupplierRepository supplierRepository, ProductRepository productRepository, ProductCategoryRepository productCategoryRepository) {
-        return args -> {
-            /*Supplier s= new Supplier("Panemar");
-            supplierRepository.save(s);
-
-            ProductCategory p = new ProductCategory("panificatie", "fainoase");
-            productCategoryRepository.save(p);
-            productRepository.save(new Product("paine", "integrala", 5, 500, "paine.jpg", p, s ));*/
-        };
+        return args -> {};
     }
 }

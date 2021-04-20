@@ -1,5 +1,6 @@
 package ro.msg.learning.shop.controllers;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
@@ -20,12 +21,12 @@ import ro.msg.learning.shop.services.OrderService;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(value = "/orders")
 @Slf4j
 public class OrderController {
 
-    @Autowired
-    private OrderService orderService;
+    private final OrderService orderService;
 
     @PostMapping(value="/insert")
     public ResponseEntity<List<OrderDetails>> addOrder(@RequestBody OrderDto orderDto) {

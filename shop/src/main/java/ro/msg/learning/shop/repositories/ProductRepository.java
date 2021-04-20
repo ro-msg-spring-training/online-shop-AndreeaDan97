@@ -5,4 +5,5 @@ import ro.msg.learning.shop.entities.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
+    Product findByName(String p);
 }
